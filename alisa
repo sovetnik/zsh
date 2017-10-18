@@ -1,0 +1,92 @@
+## Aliases
+
+# Edit this file
+alias alisa='nvim "$ZSH_CONFIG"/alisa'
+# Edit your zshrc
+alias zrc='nvim "$ZSH_CONFIG"/zshrc'
+
+# Common shortcommands
+alias hnm='hanami'
+alias dk='docker'
+alias rb='ruby'
+alias py='python3'
+alias vi='nvim'
+alias vim='nvim'
+alias zmb='ps ax | grep'
+alias cpd='cap production deploy'
+alias sasha='ssh-add ~/.ssh/id_rsa'
+alias spd='speedtest-cli'
+
+# IP address fetching
+alias ip_ext="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip_int="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print  }'"
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Git aliases
+alias gb='git branch'
+alias gc='git checkout'
+alias gm='git merge'
+alias gpf='git push -f'
+
+# Hanami shortcommands
+alias hc='hanami console'
+alias hg='hanami generate'
+alias hr='hanami routes'
+alias hs='hanami server'
+
+# Rake tasks
+alias bnd='bundle --full-index'
+alias rkr='rake routes'
+alias rkdm='rake db:migrate'
+alias rldm='rails db:migrate'
+alias rkdr='rake db:rollback'
+alias rldr='rails db:rollback'
+alias rkclone='rake db:test:clone_structure'
+alias notes="export SOURCE_ANNOTATION_DIRECTORIES='spec'; rake notes"
+
+# Railroady
+alias rrmp='railroady -M | dot -Tpng > models.png'
+alias rrms='railroady -M | dot -Tsvg > models.svg'
+
+# Rails shortcommands
+alias rc='rails console'
+alias rs='rails server'
+alias rp='cat tmp/pids/server.pid'
+alias rl='rails server -b 192.168.1.2'
+alias rsk='sidekiq'
+alias rsr='redis-server'
+alias rsp='rackup private_pub.ru -s thin -E production'
+
+# Generators
+alias rg='rails generate'
+alias rgc='rails generate controller'
+alias rgmd='rails generate model'
+alias rgmg='rails generate migration'
+alias rgp='rails generate pundit:policy'
+alias rgd='rails destroy'
+
+# RSpec
+alias rt="rspec --exclude-pattern 'spec/features/**/*_spec.rb'"
+alias rtrt="rspec spec/* --format progress --exclude-pattern 'spec/features/**/*_spec.rb' --format documentation --out rspec.txt"
+alias rtjn='rspec --format progress --format json --out results.json'
+alias rta='rspec spec/api/'
+alias rtco='rspec spec/controllers'
+alias rtfe='rspec spec/features'
+alias rtjb='rspec spec/jobs'
+alias rtma='rspec spec/mailers'
+alias rtmo='rspec spec/models'
+alias rtpo='rspec spec/policies'
+
+alias rcop='rubocop -D'
+alias rcopa='rubocop -a -D'
+alias rcopconf='rubocop --auto-gen-config'
+
+# Aliases show/hide files in finder
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
