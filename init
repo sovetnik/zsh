@@ -1,0 +1,26 @@
+## ZSH config
+
+# Source file if it exists
+function source_if_possible()
+{
+  if [ -r $1 ]; then
+    source $1
+  else
+    print "$1 not found and cannot be sourced."
+  fi
+}
+
+## Main sources
+source_if_possible $ZSH_CONFIG/zplug
+source_if_possible $ZSH_CONFIG/settings
+source_if_possible $ZSH_CONFIG/style
+source_if_possible $ZSH_CONFIG/alisa
+
+## System trash
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+export PATH="$PATH:$HOME/.rvm/bin"
+
+## Other stuff
+# Discordian date on startup
+ddate
