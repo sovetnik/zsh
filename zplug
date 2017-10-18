@@ -1,0 +1,51 @@
+## Zplug version
+# Initialize Zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# Plugin list
+# If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
+# they break, so get the order right.
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+
+# open a file at a specific line number %> vi file:123
+zplug "nviennot/zsh-vim-plugin"
+
+# Oh My Zsh plugins
+zplug "plugins/vi-mode", from:oh-my-zsh
+
+# k is the new l, yo
+zplug "supercrabtree/k"
+
+## Support commands for
+# Hanami
+zplug "davydovanton/hanami-zsh"
+
+# Postgres commands, %> pg
+zplug "caarlos0-graveyard/zsh-pg"
+
+# Rails
+zplug "paraqles/zsh-plugin-rails"
+
+## Interface improvements
+# The most awesome Powerline theme for ZSH around!
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# Sane title for terminal
+zplug "jreese/zsh-titles"
+
+## Time tracking
+# Wakatime
+zplug "wbinglee/zsh-wakatime"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+# zplug load --verbose
+zplug load
