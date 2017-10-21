@@ -3,7 +3,14 @@
 # Vim mode
 bindkey -v 
 
-# setopt APPEND_HISTORY        
+# This binds Up and Down (or j/k in vim cmd mode)
+# to a substring history search, backwards and forwards, 
+# based upon what has already been entered at the prompt.
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 ## History
 HISTFILE=$ZSH_CONFIG/history
