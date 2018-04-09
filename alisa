@@ -28,17 +28,26 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# rails with dip
+alias drc='dip rspec spec/acceptance/'
+alias drp='dip rspec spec/api/'
+alias dr='dip rspec'
+
 # Git aliases
 alias gb='git branch'
 alias gc='git checkout'
 alias gm='git merge'
+alias gs='git status'
+alias gp='git push'
 alias gpf='git push -f'
+alias gsh='git stash'
+alias gsha='git stash apply'
 
 # Hanami shortcommands
-alias hc='hanami console'
-alias hg='hanami generate'
-alias hr='hanami routes'
-alias hs='hanami server'
+alias hc='bundle exec hanami console'
+alias hg='bundle exec hanami generate'
+alias hr='bundle exec hanami routes'
+alias hs='bundle exec hanami server'
 
 # Rake tasks
 alias bnd='bundle --full-index'
@@ -47,6 +56,7 @@ alias rkdm='rake db:migrate'
 alias rldm='rails db:migrate'
 alias rkdr='rake db:rollback'
 alias rldr='rails db:rollback'
+alias rlds='rails db:seed'
 alias rkclone='rake db:test:clone_structure'
 alias notes="export SOURCE_ANNOTATION_DIRECTORIES='spec'; rake notes"
 
@@ -62,6 +72,18 @@ alias rl='rails server -b 192.168.1.2'
 alias rsk='sidekiq'
 alias rsr='redis-server'
 alias rsp='rackup private_pub.ru -s thin -E production'
+
+alias devlog='tail -f log/development.log'
+alias prodlog='tail -f log/production.log'
+alias testlog='tail -f log/test.log'
+
+alias -g HED='HANAMI_ENV=development'
+alias -g HEP='HANAMI_ENV=production'
+alias -g HET='HANAMI_ENV=test'
+
+alias -g RED='RAILS_ENV=development'
+alias -g REP='RAILS_ENV=production'
+alias -g RET='RAILS_ENV=test'
 
 # Generators
 alias rg='rails generate'

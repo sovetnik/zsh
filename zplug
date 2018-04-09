@@ -19,6 +19,9 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 # k is the new l, yo
 zplug "supercrabtree/k"
 
+# # help remembering those aliases you defined once
+zplug 'djui/alias-tips'
+
 ## Support commands for
 # Hanami
 zplug "davydovanton/hanami-zsh"
