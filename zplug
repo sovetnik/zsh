@@ -10,6 +10,9 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search"
 
+# Type `git open` to open the GitHub page 
+# or website for a repository in your browser.
+zplug "paulirish/git-open", as:plugin
 # open a file at a specific line number %> vi file:123
 zplug "nviennot/zsh-vim-plugin"
 

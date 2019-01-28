@@ -4,10 +4,12 @@
 alias alisa='nvim "$ZSH_CONFIG"/alisa'
 # Edit your zshrc
 alias zrc='nvim "$ZSH_CONFIG"/zshrc'
+alias rezrc='source $ZSH_CONFIG/init'
 
 # Common shortcommands
 alias hnm='hanami'
 alias dk='docker'
+alias lg='lazygit'
 alias rb='ruby'
 alias py='python3'
 alias vi='nvim'
@@ -37,8 +39,10 @@ alias dr='dip rspec'
 alias gb='git branch'
 alias gc='git checkout'
 alias gm='git merge'
-alias gs='git status'
+alias go='git open' # plugin required
 alias gp='git push'
+alias gs='git status'
+alias gg='git symbolic-ref --short HEAD | git diff --shortstat master'
 alias gpf='git push -f'
 alias gsh='git stash'
 alias gsha='git stash apply'
@@ -93,9 +97,14 @@ alias rgmg='rails generate migration'
 alias rgp='rails generate pundit:policy'
 alias rgd='rails destroy'
 
+# Minitest
+alias mnp='export MINITEST_REPORTER=ProgressReporter'
+alias mns='export MINITEST_REPORTER=SpecReporter'
+
 # RSpec
 alias rt="rspec --exclude-pattern 'spec/features/**/*_spec.rb'"
 alias rtrt="rspec spec/* --format progress --exclude-pattern 'spec/features/**/*_spec.rb' --format documentation --out rspec.txt"
+alias rtht="rspec spec/* --format doc --exclude-pattern 'spec/features/**/*_spec.rb' --format html --out rspec.html"
 alias rtjn='rspec --format progress --format json --out results.json'
 alias rta='rspec spec/api/'
 alias rtco='rspec spec/controllers'

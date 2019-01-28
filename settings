@@ -52,5 +52,3 @@ setopt HIST_VERIFY
 
 # Beep when accessing nonexistent history.
 setopt HIST_BEEP                 
-
-

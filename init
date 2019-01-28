@@ -6,7 +6,7 @@ function source_if_possible()
   if [ -r $1 ]; then
     source $1
   else
-    print "$1 not found and cannot be sourced."
+    print "$1 not found and cannot be sourced. Check ~/.config/zsh/init"
   fi
 }
 
