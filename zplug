@@ -45,6 +45,10 @@ zplug "jreese/zsh-titles"
 # Wakatime
 zplug "wbinglee/zsh-wakatime"
 
+## Translation
+# Multitran cli
+zplug "nogizhopaboroda/multitran_cli", as:command, use:translate
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
