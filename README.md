@@ -16,13 +16,14 @@ Maybe you want to see you own zshrc in this folder, so add a link
 
 ``` sh
 cd ~/.config/zsh
-ln ~/.zshrc zshrc
+ln zshrc ~/.zshrc
 ```
 
 Tell your zsh where you placed config and initialize
 
 ``` sh
 echo -e "export ZSH_CONFIG=~/.config/zsh" >> zshrc
+echo -e "export ZPLUG_HOME=/usr/local/opt/zplug" >> zshrc
 echo -e "source $ZSH_CONFIG/init" >> zshrc
 ```
 

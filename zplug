@@ -1,6 +1,5 @@
 ## Zplug version
 # Initialize Zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 # Plugin list
@@ -59,7 +58,3 @@ fi
 
 # zplug load --verbose
 zplug load
-
-# # maybe its not needed
-# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
