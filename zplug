@@ -59,3 +59,7 @@ fi
 
 # zplug load --verbose
 zplug load
+
+# # maybe its not needed
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
