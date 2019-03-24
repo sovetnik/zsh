@@ -7,6 +7,7 @@ alias zrc='nvim "$ZSH_CONFIG"/zshrc'
 alias rezrc='source $ZSH_CONFIG/init'
 
 # Common shortcommands
+alias t='translate'
 alias hnm='hanami'
 alias dk='docker'
 alias lg='lazygit'
