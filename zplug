@@ -36,7 +36,8 @@ zplug "paraqles/zsh-plugin-rails"
 
 ## Interface improvements
 # The most awesome Powerline theme for ZSH around!
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 # Sane title for terminal
 zplug "jreese/zsh-titles"
 
