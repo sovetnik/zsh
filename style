@@ -8,15 +8,15 @@
 
 # Ruby Version Manager information 
 # reload method to show version@gemset
-prompt_rvm() {
-  if [ $commands[rvm-prompt] ]; then
-    local version_and_gemset=${$(rvm-prompt)/ruby-}
+# prompt_rvm() {
+#   if [ $commands[rvm-prompt] ]; then
+#     local version_and_gemset=${$(rvm-prompt)/ruby-}
 
-    if [[ -n "$version_and_gemset" ]]; then
-      "$1_prompt_segment" "$0" "$2" "240" "$DEFAULT_COLOR" 'RUBY_ICON' 0 '' "${version_and_gemset/}"
-    fi
-  fi
-}
+#     if [[ -n "$version_and_gemset" ]]; then
+#       "$1_prompt_segment" "$0" "$2" "240" "$DEFAULT_COLOR" 'RUBY_ICON' 0 '' "${version_and_gemset/}"
+#     fi
+#   fi
+# }
 
 ## Path colors
 POWERLEVEL9K_DIR_HOME_BACKGROUND='71' # green
