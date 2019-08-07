@@ -9,12 +9,12 @@ alias rezrc='source $ZSH_CONFIG/init'
 # Common shortcommands
 alias t='translate'
 alias hnm='hanami'
-alias dk='docker'
 alias lg='lazygit'
 alias rb='ruby'
 alias py='python3'
 alias vi='nvim'
 alias vim='nvim'
+alias vir='nvim README.md'
 alias zmb='ps ax | grep'
 alias cpd='cap production deploy'
 alias sasha='ssh-add ~/.ssh/id_rsa'
@@ -31,6 +31,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Docker
+alias dk='docker'
+alias dke='docker exec'
+alias dki='docker exec -it'
+alias dk_stop='docker stop $(docker ps -aq)'
+alias dk_rm='docker rm $(docker ps -aq)'
+alias dk_rmi='docker rmi $(docker ps -aq)'
 # rails with dip
 alias drc='dip rspec spec/acceptance/'
 alias drp='dip rspec spec/api/'
@@ -39,6 +46,7 @@ alias dr='dip rspec'
 # Git aliases
 alias gb='git branch'
 alias gc='git checkout'
+alias gl='git clone'
 alias gm='git merge'
 alias go='git open' # plugin required
 alias gp='git push'
