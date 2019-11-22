@@ -38,6 +38,10 @@ alias dki='docker exec -it'
 alias dk_stop='docker stop $(docker ps -aq)'
 alias dk_rm='docker rm $(docker ps -aq)'
 alias dk_rmi='docker rmi $(docker ps -aq)'
+# Docker-compose
+alias dcb='docker-compose build'
+alias dcr='docker-compose run'
+alias dcu='docker-compose up'
 # rails with dip
 alias drc='dip rspec spec/acceptance/'
 alias drp='dip rspec spec/api/'
@@ -52,7 +56,8 @@ alias go='git open' # plugin required
 alias gp='git push'
 alias gs='git status'
 alias gg='git symbolic-ref --short HEAD | git diff --shortstat master'
-alias gpf='git push -f'
+alias gpf='git push --force'
+alias gpu=' git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias gsh='git stash'
 alias gsha='git stash apply'
 
@@ -72,6 +77,10 @@ alias rldr='rails db:rollback'
 alias rlds='rails db:seed'
 alias rkclone='rake db:test:clone_structure'
 alias notes="export SOURCE_ANNOTATION_DIRECTORIES='spec'; rake notes"
+
+# Ruby gems
+alias gi='gem install'
+alias giu='gem install --user-install'
 
 # Railroady
 alias rrmp='railroady -M | dot -Tpng > models.png'
