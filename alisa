@@ -40,6 +40,7 @@ alias dk_rm='docker rm $(docker ps -aq)'
 alias dk_rmi='docker rmi $(docker ps -aq)'
 # Docker-compose
 alias dcb='docker-compose build'
+alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias dcu='docker-compose up'
 # rails with dip
@@ -56,6 +57,7 @@ alias go='git open' # plugin required
 alias gp='git push'
 alias gs='git status'
 alias gg='git symbolic-ref --short HEAD | git diff --shortstat master'
+alias gd='git symbolic-ref --short HEAD | git diff --shortstat develop'
 alias gpf='git push --force'
 alias gpu=' git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias gsh='git stash'
@@ -68,6 +70,7 @@ alias hr='bundle exec hanami routes'
 alias hs='bundle exec hanami server'
 
 # Rake tasks
+alias be='bundle exec'
 alias bnd='bundle --full-index'
 alias rkr='rake routes'
 alias rkdm='rake db:migrate'
