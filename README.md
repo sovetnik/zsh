@@ -16,7 +16,6 @@ Maybe you want to see you own zshrc in this folder, so add a link
 
 ``` sh
 cd ~/.config/zsh
-ln zshrc ~/.zshrc
 ```
 
 Tell your zsh where you placed config and initialize
@@ -25,12 +24,13 @@ Tell your zsh where you placed config and initialize
 echo -e "export ZSH_CONFIG=~/.config/zsh" >> zshrc
 echo -e "export ZPLUG_HOME=/usr/local/opt/zplug" >> zshrc
 echo -e "source $ZSH_CONFIG/init" >> zshrc
+ln zshrc ~/.zshrc
 ```
 
 Install Zplug and native ext
 
 ``` sh
-brew install zplug zsh-autosuggestions zsh-history-substring-search
+brew install zplug zsh-autosuggestions zsh-history-substring-search ddate
 ```
 
 Now, open new terminal session and Zplug ask you to install plugins.

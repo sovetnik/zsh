@@ -6,11 +6,18 @@ bindkey -v
 # This binds Up and Down (or j/k in vim cmd mode)
 # to a substring history search, backwards and forwards, 
 # based upon what has already been entered at the prompt.
-bindkey '^k' history-substring-search-up
-bindkey '^j' history-substring-search-down
 
+# Run cat -v in your favorite terminal emulator to observe key codes.      
+# (NOTE: In some cases, cat -v shows the wrong key codes. 
+# If the key codes shown by cat -v don't work for you, 
+# press <C-v><UP> and <C-v><DOWN> at your ZSH command line prompt for correct key codes.)
+# For example, if you observed ^[[A for UP and ^[[B for DOWN, then
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# However, if the observed values don't work, you can try using terminfo:
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
