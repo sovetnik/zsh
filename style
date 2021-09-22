@@ -38,7 +38,7 @@ POWERLEVEL9K_RVM_BACKGROUND="52"
 POWERLEVEL9K_RVM_FOREGROUND="220"
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir rvm vcs newline vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir rvm asdf vcs newline vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 ## Advanced `vi_mode` color customization
