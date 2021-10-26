@@ -14,6 +14,7 @@ function source_if_possible()
 source_if_possible $ZSH_CONFIG/zplug
 source_if_possible $ZSH_CONFIG/settings
 source_if_possible $ZSH_CONFIG/style
+source_if_possible $ZSH_CONFIG/personal
 source_if_possible $ZSH_CONFIG/alisa
 
 ## System trash

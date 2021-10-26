@@ -43,6 +43,8 @@ alias dki='docker exec -it'
 alias dk_stop='docker stop $(docker ps -aq)'
 alias dk_rm='docker rm $(docker ps -aq)'
 alias dk_rmi='docker rmi $(docker ps -aq)'
+dk_commit_from_ps() { dk commit `dk ps | egrep -o "[0-9a-f]{12}"` }
+
 # Docker-compose
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'

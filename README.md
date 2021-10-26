@@ -13,17 +13,10 @@ cd zsh
 ```
 
 Maybe you want to see you own zshrc in this folder, so add a link
+Make sure that you don't have `.zshrc` in home directory before creating a link
 
 ``` sh
 cd ~/.config/zsh
-```
-
-Tell your zsh where you placed config and initialize
-
-``` sh
-echo -e "export ZSH_CONFIG=~/.config/zsh" >> zshrc
-echo -e "export ZPLUG_HOME=/usr/local/opt/zplug" >> zshrc
-echo -e "source $ZSH_CONFIG/init" >> zshrc
 ln zshrc ~/.zshrc
 ```
 
@@ -32,6 +25,9 @@ Install Zplug and native ext
 ``` sh
 brew install zplug zsh-autosuggestions zsh-history-substring-search ddate
 ```
+
+Add your own settings in ignored file `personal`
+Something like exporting environment tokens, aliases
 
 Now, open new terminal session and Zplug ask you to install plugins.
 
