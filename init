@@ -17,11 +17,6 @@ source_if_possible $ZSH_CONFIG/style
 source_if_possible $ZSH_CONFIG/personal
 source_if_possible $ZSH_CONFIG/alisa
 
-## System trash
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-export PATH="$PATH:$HOME/.rvm/bin"
-
 ## Other stuff
 # Discordian date on startup
 ddate
