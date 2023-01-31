@@ -7,12 +7,6 @@ alias zrc='nvim "$ZSH_CONFIG"/zshrc'
 alias rezrc='source $ZSH_CONFIG/init'
 
 # Common shortcommands
-# Translate with miltitran
-alias tm='translate'
-# Translate with soimort/translate-shell
-alias t='trans'
-alias te='trans :en'
-alias tu='trans :ru'
 alias hnm='hanami'
 alias lg='lazygit'
 alias rb='ruby'
@@ -63,8 +57,7 @@ alias gm='git merge'
 alias go='git open' # plugin required
 alias gp='git push'
 alias gs='git status'
-alias gg='git symbolic-ref --short HEAD | git diff --shortstat main'
-alias gd='git symbolic-ref --short HEAD | git diff --shortstat develop'
+alias gg='git diff --shortstat'
 alias gpf='git push --force'
 alias gpu=' git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias gsh='git stash'

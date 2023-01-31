@@ -8,8 +8,14 @@ Clone this repo somewhere in your home
 
 ``` sh
 cd ~/.config
-git clone https://github.com/sovetnik/zsh.git
+git clone git@github.com:sovetnik/zsh.git
 cd zsh
+./install.sh
+```
+
+Install via script
+``` sh
+./install.sh
 ```
 
 Maybe you want to see you own zshrc in this folder, so add a link
