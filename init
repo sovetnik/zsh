@@ -11,11 +11,17 @@ function source_if_possible()
 }
 
 ## Main sources
-source_if_possible $ZSH_CONFIG/zplug
+source_if_possible $ZSH_CONFIG/antidote
 source_if_possible $ZSH_CONFIG/settings
-source_if_possible $ZSH_CONFIG/style
 source_if_possible $ZSH_CONFIG/personal
 source_if_possible $ZSH_CONFIG/alisa
+
+# Erlang compile flags
+export KERL_BUILD_DOCS="yes"
+# export KERL_CONFIGURE_OPTIONS="--with-wx --with-wx-config=/opt/homebrew/bin/wx-config --without-javac --without-odbc"
+export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac --without-odbc"
+
+export PATH="/Users/sovetnik/.local/bin:/opt/homebrew/opt/curl/bin:$PATH"
 
 ## Other stuff
 # Discordian date on startup

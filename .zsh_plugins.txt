@@ -1,0 +1,26 @@
+# Inline autosuggestions from history and completions.
+zsh-users/zsh-autosuggestions
+
+# Real-time command syntax highlighting in prompt.
+zsh-users/zsh-syntax-highlighting
+
+# Up/down history search by current command prefix.
+zsh-users/zsh-history-substring-search
+
+# Open git remotes/files/PRs in browser via `git open`.
+paulirish/git-open
+
+# Standalone vi-mode for Zsh (cursor, keymaps, motions).
+jeffreytse/zsh-vi-mode
+
+# Suggests matching aliases for typed commands.
+djui/alias-tips
+
+# Fast prompt theme (Powerlevel10k).
+romkatv/powerlevel10k
+
+# Dynamic terminal/tab titles based on context.
+jreese/zsh-titles
+
+# WakaTime tracking for shell activity.
+wbinglee/zsh-wakatime

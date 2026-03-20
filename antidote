@@ -1,0 +1,24 @@
+## Antidote plugin manager
+
+# Bootstrap antidote locally (only once)
+ANTIDOTE_HOME="$ZSH_CONFIG/.antidote"
+if [ ! -f "$ANTIDOTE_HOME/antidote.zsh" ]; then
+  command git clone --depth=1 https://github.com/mattmc3/antidote.git "$ANTIDOTE_HOME" >/dev/null 2>&1
+fi
+
+if [ -f "$ANTIDOTE_HOME/antidote.zsh" ]; then
+  source "$ANTIDOTE_HOME/antidote.zsh"
+
+  BUNDLE_FILE="$ZSH_CONFIG/.zsh_plugins.txt"
+  BUNDLE_CACHE="$ZSH_CONFIG/.zsh_plugins.zsh"
+
+  if [ -f "$BUNDLE_FILE" ]; then
+    if [ ! -f "$BUNDLE_CACHE" ] || [ "$BUNDLE_FILE" -nt "$BUNDLE_CACHE" ] || [ "$ANTIDOTE_HOME/antidote.zsh" -nt "$BUNDLE_CACHE" ]; then
+      antidote bundle < "$BUNDLE_FILE" >| "$BUNDLE_CACHE"
+    fi
+
+    source "$BUNDLE_CACHE"
+  fi
+else
+  print "antidote bootstrap failed (git clone mattmc3/antidote)."
+fi
