@@ -1,40 +1,36 @@
-# ZSH configuration for vimmer and rubyist
+# ZSH configuration for vim + elixir workflow
 
 <img src="./ScreenShot.png" />
 
 ## Installation
 
-Clone this repo somewhere in your home
-
-``` sh
+```sh
 cd ~/.config
 git clone git@github.com:sovetnik/zsh.git
-cd zsh
-./install.sh
+ln -sf ~/.config/zsh/zshrc ~/.zshrc
 ```
 
-Install via script
-``` sh
-./install.sh
+Install base tools:
+
+```sh
+brew install ddate eza
 ```
 
-Maybe you want to see you own zshrc in this folder, so add a link
-Make sure that you don't have `.zshrc` in home directory before creating a link
+Open a new shell (or run `source ~/.zshrc`).
 
-``` sh
-cd ~/.config/zsh
-ln zshrc ~/.zshrc
+## Plugins
+
+Plugins are managed by **antidote**.
+Bundled plugin list: `.zsh_plugins.txt`.
+Generated bundle file: `.zsh_plugins.zsh`.
+
+To update plugins manually:
+
+```sh
+antidote update
 ```
 
-Install Zplug and native ext
+## Personal settings
 
-``` sh
-brew install zplug zsh-autosuggestions zsh-history-substring-search ddate
-```
-
-Add your own settings in ignored file `personal`
-Something like exporting environment tokens, aliases
-
-Now, open new terminal session and Zplug ask you to install plugins.
-
-## Enjoy :)
+Put machine-local secrets and overrides in ignored file `personal`
+(e.g. tokens, local aliases, host-specific exports).
