@@ -1,7 +1,7 @@
 ## ZSH Settings
 
 # Vim mode
-bindkey -v 
+# bindkey -v 
 
 # This binds Up and Down (or j/k in vim cmd mode)
 # to a substring history search, backwards and forwards, 

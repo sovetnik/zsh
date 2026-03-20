@@ -4,20 +4,23 @@
 alias alisa='nvim "$ZSH_CONFIG"/alisa'
 # Edit your zshrc
 alias zrc='nvim "$ZSH_CONFIG"/zshrc'
-alias rezrc='source $ZSH_CONFIG/init'
+alias rezrc='source ~/.zshrc'
+alias nvir='nvim "$NEOVIM_CONFIG"/README.md'
 
 # Common shortcommands
-alias hnm='hanami'
 alias lg='lazygit'
-alias rb='ruby'
 alias py='python3'
 alias vi='nvim'
 alias vim='nvim'
 alias vir='nvim README.md'
 alias zmb='ps ax | grep'
-alias cpd='cap production deploy'
 alias sasha='ssh-add ~/.ssh/id_rsa'
 alias spd='speedtest-cli'
+
+# eza replacements for ls
+alias ls='eza --group-directories-first'
+alias ll='eza -lah --icons --group-directories-first'
+alias lt='eza --tree --level=2 --icons'
 
 # IP address fetching
 alias ip_ext="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -29,25 +32,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-
-# Docker
-alias dk='docker'
-alias dke='docker exec'
-alias dki='docker exec -it'
-alias dk_stop='docker stop $(docker ps -aq)'
-alias dk_rm='docker rm $(docker ps -aq)'
-alias dk_rmi='docker rmi $(docker ps -aq)'
-dk_commit_from_ps() { dk commit `dk ps | egrep -o "[0-9a-f]{12}"` }
-
-# Docker-compose
-alias dcb='docker-compose build'
-alias dce='docker-compose exec'
-alias dcr='docker-compose run'
-alias dcu='docker-compose up'
-# rails with dip
-alias drc='dip rspec spec/acceptance/'
-alias drp='dip rspec spec/api/'
-alias dr='dip rspec'
 
 # Git aliases
 alias gb='git branch'
@@ -62,82 +46,6 @@ alias gpf='git push --force'
 alias gpu=' git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias gsh='git stash'
 alias gsha='git stash apply'
-
-# Hanami shortcommands
-alias hc='bundle exec hanami console'
-alias hg='bundle exec hanami generate'
-alias hr='bundle exec hanami routes'
-alias hs='bundle exec hanami server'
-
-# Rake tasks
-alias be='bundle exec'
-alias bnd='bundle --full-index'
-alias rkr='rake routes'
-alias rkdm='rake db:migrate'
-alias rldm='rails db:migrate'
-alias rkdr='rake db:rollback'
-alias rldr='rails db:rollback'
-alias rlds='rails db:seed'
-alias rkclone='rake db:test:clone_structure'
-alias notes="export SOURCE_ANNOTATION_DIRECTORIES='spec'; rake notes"
-
-# Ruby gems
-alias gi='gem install'
-alias giu='gem install --user-install'
-
-# Railroady
-alias rrmp='railroady -M | dot -Tpng > models.png'
-alias rrms='railroady -M | dot -Tsvg > models.svg'
-
-# Rails shortcommands
-alias rc='rails console'
-alias rs='rails server'
-alias rp='cat tmp/pids/server.pid'
-alias rl='rails server -b 192.168.1.2'
-alias rsk='sidekiq'
-alias rsr='redis-server'
-alias rsp='rackup private_pub.ru -s thin -E production'
-
-alias devlog='tail -f log/development.log'
-alias prodlog='tail -f log/production.log'
-alias testlog='tail -f log/test.log'
-
-alias -g HED='HANAMI_ENV=development'
-alias -g HEP='HANAMI_ENV=production'
-alias -g HET='HANAMI_ENV=test'
-
-alias -g RED='RAILS_ENV=development'
-alias -g REP='RAILS_ENV=production'
-alias -g RET='RAILS_ENV=test'
-
-# Generators
-alias rg='rails generate'
-alias rgc='rails generate controller'
-alias rgmd='rails generate model'
-alias rgmg='rails generate migration'
-alias rgp='rails generate pundit:policy'
-alias rgd='rails destroy'
-
-# Minitest
-alias mnp='export MINITEST_REPORTER=ProgressReporter'
-alias mns='export MINITEST_REPORTER=SpecReporter'
-
-# RSpec
-alias rt="rspec --exclude-pattern 'spec/features/**/*_spec.rb'"
-alias rtrt="rspec spec/* --format progress --exclude-pattern 'spec/features/**/*_spec.rb' --format documentation --out rspec.txt"
-alias rtht="rspec spec/* --format doc --exclude-pattern 'spec/features/**/*_spec.rb' --format html --out rspec.html"
-alias rtjn='rspec --format progress --format json --out results.json'
-alias rta='rspec spec/api/'
-alias rtco='rspec spec/controllers'
-alias rtfe='rspec spec/features'
-alias rtjb='rspec spec/jobs'
-alias rtma='rspec spec/mailers'
-alias rtmo='rspec spec/models'
-alias rtpo='rspec spec/policies'
-
-alias rcop='rubocop -D'
-alias rcopa='rubocop -a -D'
-alias rcopconf='rubocop --auto-gen-config'
 
 # Aliases show/hide files in finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
