@@ -1,5 +1,12 @@
 ## ZSH config
 
+if [[ -n "${ZSH_CONFIG_INIT_DONE:-}" ]]; then
+  return
+fi
+export ZSH_CONFIG_INIT_DONE=1
+
+typeset -U path PATH fpath FPATH
+
 # Source file if it exists
 function source_if_possible()
 {
@@ -13,7 +20,8 @@ function source_if_possible()
 ## Main sources
 source_if_possible $ZSH_CONFIG/antidote
 source_if_possible $ZSH_CONFIG/settings
-source_if_possible $ZSH_CONFIG/personal
+source_if_possible $ZSH_CONFIG/runtime
+source_if_possible $ZSH_CONFIG/secrets
 source_if_possible $ZSH_CONFIG/alisa
 
 # Erlang compile flags

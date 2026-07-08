@@ -1,0 +1,19 @@
+# Shared runtime settings for all machines.
+
+# This hides user@host on the local machine in the prompt.
+export DEFAULT_USER=sovetnik
+
+export EDITOR=nvim
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Tells Erlang to keep shell history in iex.
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Put ASDF shims first so project runtimes win over system binaries.
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
+
+HEROKU_AC_ZSH_SETUP_PATH=/Users/sovetnik/Library/Caches/heroku/autocomplete/zsh_setup
+test -f "$HEROKU_AC_ZSH_SETUP_PATH" && source "$HEROKU_AC_ZSH_SETUP_PATH"
