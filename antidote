@@ -11,14 +11,65 @@ if [ -f "$ANTIDOTE_HOME/antidote.zsh" ]; then
 
   BUNDLE_FILE="$ZSH_CONFIG/.zsh_plugins.txt"
   BUNDLE_CACHE="$ZSH_CONFIG/.zsh_plugins.zsh"
+  BUNDLE_LOCK="$ZSH_CONFIG/.zsh_plugins.zsh.lock"
+  BUNDLE_LOCK_STALE_SECS=2
+  BUNDLE_LOCK_POLL_SECS=0.5
 
-  if [ -f "$BUNDLE_FILE" ]; then
-    if [ ! -f "$BUNDLE_CACHE" ] || [ "$BUNDLE_FILE" -nt "$BUNDLE_CACHE" ] || [ "$ANTIDOTE_HOME/antidote.zsh" -nt "$BUNDLE_CACHE" ]; then
-      antidote bundle < "$BUNDLE_FILE" >| "$BUNDLE_CACHE"
-    fi
+  # Multiple panes/tabs can start concurrently (eg. restoring an iTerm2
+  # window arrangement) and used to race on rewriting BUNDLE_CACHE directly,
+  # so a shell could source it mid-write and silently lose plugin bindkeys
+  # (history-substring-search's <Up>/<Down> in particular). `mkdir` is an
+  # atomic claim (only one process can create the same dir), and publishing
+  # via `mv` into place means any reader always sees either the old complete
+  # file or the new complete one, never a torn write - so only one process
+  # ever does the actual rebuild, and nobody needs the lock just to read.
+  function _bundle_stale() {
+    [ ! -f "$BUNDLE_CACHE" ] || [ "$BUNDLE_FILE" -nt "$BUNDLE_CACHE" ] || [ "$ANTIDOTE_HOME/antidote.zsh" -nt "$BUNDLE_CACHE" ]
+  }
 
-    source "$BUNDLE_CACHE"
+  function _lock_age() {
+    local created
+    created=$(date -r "$BUNDLE_LOCK" +%s 2>/dev/null) || return 1
+    print $(( $(date +%s) - created ))
+  }
+
+  if [ -f "$BUNDLE_FILE" ] && _bundle_stale; then
+    while true; do
+      if mkdir "$BUNDLE_LOCK" 2>/dev/null; then
+        ZSH_BUNDLE_REBUILT=1
+        (
+          trap 'rmdir "$BUNDLE_LOCK" 2>/dev/null' EXIT
+          BUNDLE_TMP=$(mktemp "$BUNDLE_CACHE.XXXXXX")
+          antidote bundle < "$BUNDLE_FILE" >| "$BUNDLE_TMP" && mv -f "$BUNDLE_TMP" "$BUNDLE_CACHE"
+        )
+        break
+      fi
+
+      # Someone else is already writing. Wait for them, but don't trust the
+      # lock forever - a writer that crashed mid-bundle leaves the directory
+      # behind, so treat one older than plausible as abandoned and reclaim it.
+      # Reclaiming early when the writer is just slow costs nothing beyond a
+      # duplicate rebuild: the atomic rename above means whichever `mv` lands
+      # last still publishes a complete, valid file.
+      while [ -d "$BUNDLE_LOCK" ]; do
+        age=$(_lock_age) || break
+        if [ "$age" -ge "$BUNDLE_LOCK_STALE_SECS" ]; then
+          rmdir "$BUNDLE_LOCK" 2>/dev/null
+          break
+        fi
+        sleep "$BUNDLE_LOCK_POLL_SECS"
+      done
+
+      # Lock is gone: either the other writer published a fresh cache
+      # (nothing left to do) or we just reclaimed an abandoned lock (cache
+      # is still stale, so loop back and become the writer ourselves).
+      _bundle_stale || break
+    done
   fi
+
+  unfunction _bundle_stale _lock_age 2>/dev/null
+
+  [ -f "$BUNDLE_FILE" ] && [ -f "$BUNDLE_CACHE" ] && source "$BUNDLE_CACHE"
 else
   print "antidote bootstrap failed (git clone mattmc3/antidote)."
 fi

@@ -36,3 +36,4 @@ export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac --without-odbc"
 ## Other stuff
 # Discordian date on startup
 ddate
+[ -n "$ZSH_BUNDLE_REBUILT" ] && print "Samosboris completed"
