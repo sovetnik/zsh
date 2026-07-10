@@ -3,7 +3,11 @@
 if [[ -n "${ZSH_CONFIG_INIT_DONE:-}" ]]; then
   return
 fi
-export ZSH_CONFIG_INIT_DONE=1
+# Not exported on purpose: this guard only needs to prevent re-sourcing
+# init within the same process. Exporting it leaked into child shell
+# processes (new tabs/panes inheriting environment), causing them to
+# skip settings/secrets/antidote entirely — silently, with no error.
+ZSH_CONFIG_INIT_DONE=1
 
 typeset -U path PATH fpath FPATH
 
@@ -28,8 +32,6 @@ source_if_possible $ZSH_CONFIG/alisa
 export KERL_BUILD_DOCS="yes"
 # export KERL_CONFIGURE_OPTIONS="--with-wx --with-wx-config=/opt/homebrew/bin/wx-config --without-javac --without-odbc"
 export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac --without-odbc"
-
-export PATH="/Users/sovetnik/.local/bin:/opt/homebrew/opt/curl/bin:$PATH"
 
 ## Other stuff
 # Discordian date on startup

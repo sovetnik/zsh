@@ -1,26 +1,39 @@
 ## ZSH Settings
 
-# Vim mode
-# bindkey -v 
-
 # This binds Up and Down (or j/k in vim cmd mode)
 # to a substring history search, backwards and forwards, 
 # based upon what has already been entered at the prompt.
 
-# Run cat -v in your favorite terminal emulator to observe key codes.      
-# (NOTE: In some cases, cat -v shows the wrong key codes. 
-# If the key codes shown by cat -v don't work for you, 
+# Run cat -v in your favorite terminal emulator to observe key codes.
+# (NOTE: In some cases, cat -v shows the wrong key codes.
+# If the key codes shown by cat -v don't work for you,
 # press <C-v><UP> and <C-v><DOWN> at your ZSH command line prompt for correct key codes.)
-# For example, if you observed ^[[A for UP and ^[[B for DOWN, then
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#
+# zsh-vi-mode re-applies its own keymap on every zle-line-init/keymap-select
+# cycle (i.e. on every new prompt, not just once at shell startup), which
+# silently overrides plain top-level `bindkey` calls made here. Its
+# documented extension point for surviving that is the `zvm_after_init`
+# hook — the plugin calls it itself after (re)installing its bindings, so
+# anything bound inside it sticks across prompts instead of getting
+# clobbered on the first real keypress.
+function zvm_after_init() {
+  # For example, if you observed ^[[A for UP and ^[[B for DOWN, then
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
 
-# However, if the observed values don't work, you can try using terminfo:
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+  # However, if the observed values don't work, you can try using terminfo:
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+
+  # zsh-vi-mode's viins keymap doesn't inherit emacs-only bindings by
+  # default, so Ctrl+R ends up bound to `redisplay` instead of reverse
+  # history search.
+  bindkey '^R' history-incremental-search-backward
+  bindkey -M vicmd '^R' history-incremental-search-backward
+}
 
 ## History
 HISTFILE=$ZSH_CONFIG/history

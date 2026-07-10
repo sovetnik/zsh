@@ -10,8 +10,13 @@ export LC_ALL=en_US.UTF-8
 # Tells Erlang to keep shell history in iex.
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Put ASDF shims first so project runtimes win over system binaries.
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Put ASDF shims first so project runtimes win over system binaries, then
+# personal scripts and a newer curl than the system one. Both must be
+# prepended together in front of the $PATH inherited at this point (which
+# already has /usr/bin etc. from .zprofile's path_helper/brew shellenv) —
+# appending to the end would put them after /usr/bin, so the system curl
+# would always be found first.
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/Users/sovetnik/.local/bin:/opt/homebrew/opt/curl/bin:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
 
